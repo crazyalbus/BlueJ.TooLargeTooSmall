@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 /**
  * Write a description of class Main here.
@@ -7,27 +8,42 @@
  */
 public class Main
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    // my variables
+    int number = (int) (Math.random() * 10);
+    int guess;
+    
+    int count;
+    boolean keepGuessing;
 
-    /**
-     * Constructor for objects of class Main
-     */
-    public Main()
-    {
-        // initialise instance variables
-        x = 0;
-    }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
+    public void main(){
+        int count = 0;
+        int oldGuess = -1;
+        
+         do {
+             Scanner in = new Scanner(System.in);
+            
+             System.out.print("I'm thinking of a number between 0 and 10. What is it?");
+         
+             int guess = in.nextInt();
+
+            if (guess != oldGuess) {
+                count = count + 1;
+            }
+     
+        if (guess == number) {
+            System.out.println("You are right! You guessed it in " + count + " tries.");
+            keepGuessing = false;
+        } else if (guess < number) {
+            System.out.println("Your guess is too low. Try again.");
+            keepGuessing = true;
+            oldGuess = guess;
+        } else {System.out.println("Your guess is too high. Try again.");
+            keepGuessing = true;
+            oldGuess = guess;
+        } 
+       } while(keepGuessing);
 }
+}
+    
+    
